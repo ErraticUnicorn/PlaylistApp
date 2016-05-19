@@ -1,11 +1,8 @@
-class UserPolicy
-  attr_reade :user
 
-  def initialize(user)
-    @user = user
-  end
+class UserPolicy < ApplicationPolicy
+  attr_reader :user
 
-  def destroy
+  def destroy?
     user.admin?
   end
 end

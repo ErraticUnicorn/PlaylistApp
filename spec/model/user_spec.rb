@@ -7,11 +7,11 @@ describe User do
   end
 
   it "is invalid without an email" do
-    expect{FactoryGirl.create(:user,  password: "password")}.to raise_exception
+    expect{FactoryGirl.create(:user,  password: "password")}.to raise_exception(ActiveRecord::RecordInvalid)
   end
 
   it "is invalid without a password" do
-    expect{FactoryGirl.create(:user,  email: "test@email.com")}.to raise_exception
+    expect{FactoryGirl.create(:user,  email: "test@email.com")}.to raise_exception(ActiveRecord::RecordInvalid)
   end
 
   it "is invalid with a duplicate email address" do
