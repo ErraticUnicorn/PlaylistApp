@@ -15,8 +15,9 @@ describe User do
   end
 
   it "is invalid with a duplicate email address" do
-    FactoryGirl.create(:user, email: "test@test.com", password: "password")
-    expect{FactoryGirl.create(:user, email: "test@test.com", password: "password")}.to raise_exception
+    expect{
+      FactoryGirl.create_list(:user, 2, :is_valid)
+    }.to raise_exception(ActiveRecord::RecordInvalid)
   end
 
 end
